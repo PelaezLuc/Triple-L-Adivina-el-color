@@ -25,10 +25,10 @@ header {
   width: 44px;
 }
 
-.texto-autor {
-  font-family: "Kalam";
+.branding {
+  font-family: "Robotto";
   font-size: 2rem;
-  line-height: 106px;
+  line-height: 90px;
 }
 
 .seccion-1 {
@@ -55,19 +55,19 @@ h1 {
   font-size: 3rem;
 }
 
-.cajon {
+.caja {
   height: 350px;
   width: 500px;
-}
-
-.rojo {
+  margin: 1rem;
   background-color: red;
 }
 
-.verde {
-  background-color: green;
+.caja:hover {
+  display: block;
 }
 
-.azul {
-  background-color: blue;
+.contenedor {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
 }

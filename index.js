@@ -1,7 +1,8 @@
 "use strict";
 
-let baul = [];
+const baul = [0, 1, 2];
 let codigoRGB = generarCodigoRGB();
+let numGanador = generarNumAleatorio();
 
 function generarCodigoRGB(red, green, blue) {
   const max = 255;
@@ -15,24 +16,42 @@ function generarCodigoRGB(red, green, blue) {
   return resultado;
 }
 
-// function cambiarColor() {
-//   return (document.getElementsByClassName(
-//     "cajon"
-//   ).style.backgroundColor = `rgb(${generarCodigoRGB()})`);
-// }
+function generarBackgroundColor(baul) {
+  baul[0] = document.getElementById(
+    "caja-1"
+  ).style.backgroundColor = `rgb(${generarCodigoRGB()})`;
+  baul[1] = document.getElementById(
+    "caja-2"
+  ).style.backgroundColor = `rgb(${generarCodigoRGB()})`;
+  baul[2] = document.getElementById(
+    "caja-3"
+  ).style.backgroundColor = `rgb(${generarCodigoRGB()})`;
 
-function imprimirCodigoRGB() {
-  const codigo = document.getElementById("codigo-rgb");
-
-  return codigo.append(generarCodigoRGB());
+  return baul;
 }
 
-function generarNumAleatorio() {
+function imprimirCodigoRGB() {
+  let codigo = document.getElementById("codigo-rgb");
+
+  return codigo.append(codigoRGB);
+}
+
+function generarNumAleatorio(num) {
   const max = 3;
-  let num = Math.floor(Math.random() * max);
+  num = Math.floor(Math.random() * max);
   return num;
 }
 
-generarCodigoRGB();
+function generarCajaAcierto(baul) {
+  for (let i = 0; i <= 2; i++) {
+    if (numGanador === i) {
+      baul[i] = document.querySelectorAll(".caja")[
+        i
+      ].style.backgroundColor = `rgb(${codigoRGB})`;
+    }
+  }
+}
+
+console.log(numGanador);
 imprimirCodigoRGB();
-cambiarColor();
+generarCajaAcierto();
