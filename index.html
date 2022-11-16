@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Lucas Peláez | Luis Ángel | Liuemith Sánchez">
     <meta name="description" content="Juego Adivina el Color">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <script src="./index.js" defer type="module"></script>
     <title>Adivina El Color</title>
@@ -14,29 +15,43 @@
 
 <body>
     <header>
-        <img class="logo-paleta" src="/images/paleta.png" alt="logo-paleta" />
-        <p class="branding">
+        <!-- <img class="logo-paleta" src="/images/paleta.png" alt="logo-paleta" /> -->
+        <p>
             Triple-L-Games
         </p>
     </header>
 
-    <section class="seccion-1">
-        <h1>
-            Adivina El Color
-        </h1>
+    <main>
+        <section class="seccion-1">
+            <h1>
+                Adivina El Color
+            </h1>
+        </section>
 
-        <p id="codigo-rgb">
-            Codigo RGB:
-        </p>
-    </section>
+        <section class="seccion-2 contenedor-colores">
+            <div class="neomorf">
+                <div id="caja-1" class="caja"></div>
+            </div>
 
-    <section class="seccion-2">
-        <div id="caja-1" class="caja"></div>
+            <div class="neomorf">
+                <div id="caja-2" class="caja"></div>
+            </div>
 
-        <div id="caja-2" class="caja"></div>
+            <div class="neomorf">
+                <div id="caja-3" class="caja"></div>
+            </div>
+        </section>
 
-        <div id="caja-3" class="caja"></div>
-    </section>
+        <section class="seccion-3">
+            <p id="codigo-rgb">
+                Codigo RGB:
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>HACK A BOSS 2022 ©️</p>
+    </footer>
 
     <!-- <div id="caja"></div> -->
 </body>
