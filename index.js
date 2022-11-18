@@ -4,9 +4,11 @@ const baul = [0, 1, 2];
 let codigoRGB = generarCodigoRGB();
 let numGanador = generarNumAleatorio();
 const divColor = document.querySelectorAll("div .caja");
+let aciertos = 0;
+let fallos = 0;
 
-function generarCodigoRGB(red, green, blue) {
-  const max = 255;
+function generarCodigoRGB() {
+  const max = 256;
 
   red = Math.floor(Math.random() * max);
   green = Math.floor(Math.random() * max);
@@ -17,24 +19,21 @@ function generarCodigoRGB(red, green, blue) {
   return resultado;
 }
 
-function generarBackgroundColor(baul) {
-  baul = document.getElementById(
+function generarBackgroundColor() {
+  document.getElementById(
     "caja-1"
   ).style.backgroundColor = `rgb(${generarCodigoRGB()})`;
-  baul = document.getElementById(
+  document.getElementById(
     "caja-2"
   ).style.backgroundColor = `rgb(${generarCodigoRGB()})`;
-  baul = document.getElementById(
+  document.getElementById(
     "caja-3"
   ).style.backgroundColor = `rgb(${generarCodigoRGB()})`;
-
-  return baul;
 }
 
 function imprimirCodigoRGB() {
   let codigo = document.getElementById("codigo-rgb");
-
-  return codigo.append(codigoRGB);
+  codigo.textContent = `RGB: ${codigoRGB}`;
 }
 
 function generarNumAleatorio(num) {
@@ -43,24 +42,42 @@ function generarNumAleatorio(num) {
   return num;
 }
 
+// function generarCajaAcierto() {
+//   for (let i = 0; i <= 2; i++) {
+//     //num ganador = 2
+//     if (i === numGanador) {
+//       baul[i] = document.querySelectorAll(".caja")[
+//         i
+//       ].style.backgroundColor = `rgb(${codigoRGB})`;
+//     }
+//   }
+// }
+
 function generarCajaAcierto() {
-  for (let i = 0; i <= 2; i++) {
-    if (numGanador === i) {
-      baul[i] = document.querySelectorAll(".caja")[
-        i
-      ].style.backgroundColor = `rgb(${codigoRGB})`;
-    }
+  document.querySelectorAll(".caja")[
+    numGanador
+  ].style.backgroundColor = `rgb(${codigoRGB})`;
+}
+
+const contenedorColores = document.querySelector(".contenedor-colores");
+contenedorColores.addEventListener("click", (event) => {
+  if (event.target.className !== "caja") {
+    return;
   }
-}
-
-function puntuar(divColor) {
-  let contador = 0;
-  let acierto = true;
-  let fallo = true;
-  // while (contador < 6) {
-
-  // }
-}
+  if (event.target.style.backgroundColor === `rgb(${codigoRGB})`) {
+    aciertos++;
+    document.querySelector(".acierto").textContent = aciertos;
+  } else {
+    fallos++;
+    document.querySelector(".fallos").textContent = fallos;
+  }
+  generarBackgroundColor();
+  codigoRGB = generarCodigoRGB();
+  numGanador = generarNumAleatorio();
+  console.log(numGanador);
+  generarCajaAcierto();
+  imprimirCodigoRGB();
+});
 
 imprimirCodigoRGB();
 generarBackgroundColor();
