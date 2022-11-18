@@ -10,9 +10,9 @@ let fallos = 0;
 function generarCodigoRGB() {
   const max = 256;
 
-  red = Math.floor(Math.random() * max);
-  green = Math.floor(Math.random() * max);
-  blue = Math.floor(Math.random() * max);
+  const red = Math.floor(Math.random() * max);
+  const green = Math.floor(Math.random() * max);
+  const blue = Math.floor(Math.random() * max);
 
   let resultado = `${red}, ${blue}, ${green}`;
 
