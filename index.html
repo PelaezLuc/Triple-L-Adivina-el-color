@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Lucas Peláez | Luis Ángel | Liuemith Sánchez">
+    <meta name="author" content="Luis Ángel | Lucas Peláez | Liuemith Sánchez">
     <meta name="description" content="Juego Adivina el Color">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/paleta.png" type="image/x-icon">
     <link rel="stylesheet" href="/styles.css">
     <script src="./index.js" defer type="module"></script>
     <title>Adivina El Color</title>
@@ -15,15 +16,17 @@
 
 <body>
     <header>
-        <p>
-            Triple-L-Games
-        </p>
+        <div>
+            <p class="titulo">3*L GAMES</p>
+            <img class="logo-paleta" src="/images/paleta.png" alt="logo-paleta" />
+        </div>
+
     </header>
 
     <main>
         <section class="seccion-1">
             <h1>
-                Adivina El Color
+                ¿Qué Color Es?
             </h1>
         </section>
 
@@ -43,20 +46,30 @@
 
         <section class="seccion-3">
             <p id="codigo-rgb">
-                Codigo RGB:
             </p>
         </section>
         <ul>
-            <li class="acierto">0</li>
-            <li class="fallos">0</li>
-        </ul>
+            <li>
+                <p>Aciertos</p>
+                <span class="acierto"></span>
+                <span class="acierto"></span>
+                <span class="acierto"></span>
+            </li>
+            <li>
+                <button id="boton-reset" class="boton-reset" type="reset">Nuevo</button>
+            </li>
+            <li>
+                <span class="fallo"></span>
+                <span class="fallo"></span>
+                <span class="fallo"></span>
+                <p>Fallos</p>
+            </li>
     </main>
 
     <footer>
-        <p>HACK A BOSS 2022 ©️</p>
+        <p>Luis Collins - Lucas Peláez - Liuemith Sánchez - | HACK A BOSS 2022 ©️ |</p>
     </footer>
 
-    <!-- <div id="caja"></div> -->
 </body>
 
 </html>

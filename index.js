@@ -4,8 +4,13 @@ const baul = [0, 1, 2];
 let codigoRGB = generarCodigoRGB();
 let numGanador = generarNumAleatorio();
 const divColor = document.querySelectorAll("div .caja");
-let aciertos = 0;
-let fallos = 0;
+const contenedorColores = document.querySelector(".contenedor-colores");
+const botonNuevoJuego = document.getElementById("boton-reset");
+const h1 = document.querySelector("h1");
+const textoVictoria = "¡HAS GANADO!😉";
+const textoDerrota = "¡HAS PERDIDO!😬";
+let acierto = 0;
+let fallo = 0;
 
 function generarCodigoRGB() {
   const max = 256;
@@ -33,7 +38,7 @@ function generarBackgroundColor() {
 
 function imprimirCodigoRGB() {
   let codigo = document.getElementById("codigo-rgb");
-  codigo.textContent = `RGB: ${codigoRGB}`;
+  codigo.textContent = `Código RGB: ${codigoRGB}`;
 }
 
 function generarNumAleatorio(num) {
@@ -42,35 +47,65 @@ function generarNumAleatorio(num) {
   return num;
 }
 
-// function generarCajaAcierto() {
-//   for (let i = 0; i <= 2; i++) {
-//     //num ganador = 2
-//     if (i === numGanador) {
-//       baul[i] = document.querySelectorAll(".caja")[
-//         i
-//       ].style.backgroundColor = `rgb(${codigoRGB})`;
-//     }
-//   }
-// }
-
 function generarCajaAcierto() {
   document.querySelectorAll(".caja")[
     numGanador
   ].style.backgroundColor = `rgb(${codigoRGB})`;
 }
 
-const contenedorColores = document.querySelector(".contenedor-colores");
 contenedorColores.addEventListener("click", (event) => {
   if (event.target.className !== "caja") {
     return;
   }
   if (event.target.style.backgroundColor === `rgb(${codigoRGB})`) {
-    aciertos++;
-    document.querySelector(".acierto").textContent = aciertos;
+    acierto++;
+    if (acierto > 3 || fallo >= 3) {
+      location.reload();
+    } else {
+      switch (acierto) {
+        case 1:
+          document.querySelectorAll(".acierto")[0].style.backgroundColor =
+            "green";
+          break;
+        case 2:
+          document.querySelectorAll(".acierto")[1].style.backgroundColor =
+            "green";
+          break;
+
+        case 3:
+          document.querySelectorAll(".acierto")[2].style.backgroundColor =
+            "green";
+          break;
+      }
+    }
+    if (acierto === 3) {
+      h1.innerHTML = "";
+      h1.append(textoVictoria);
+    }
   } else {
-    fallos++;
-    document.querySelector(".fallos").textContent = fallos;
+    fallo++;
+    if (fallo > 3 || acierto >= 3) {
+      location.reload();
+    } else {
+      switch (fallo) {
+        case 1:
+          document.querySelectorAll(".fallo")[0].style.backgroundColor = "red";
+          break;
+        case 2:
+          document.querySelectorAll(".fallo")[1].style.backgroundColor = "red";
+          break;
+        case 3:
+          document.querySelectorAll(".fallo")[2].style.backgroundColor = "red";
+          break;
+      }
+    }
+
+    if (fallo === 3) {
+      h1.innerHTML = "";
+      h1.append(textoDerrota);
+    }
   }
+
   generarBackgroundColor();
   codigoRGB = generarCodigoRGB();
   numGanador = generarNumAleatorio();
@@ -79,8 +114,16 @@ contenedorColores.addEventListener("click", (event) => {
   imprimirCodigoRGB();
 });
 
-imprimirCodigoRGB();
+botonNuevoJuego.addEventListener("click", (event) => {
+  if (event.target.className !== "boton-reset") {
+    return;
+  }
+  location.reload();
+});
+
 generarBackgroundColor();
+codigoRGB = generarCodigoRGB();
+numGanador = generarNumAleatorio();
 console.log(numGanador);
-console.log(codigoRGB);
 generarCajaAcierto();
+imprimirCodigoRGB();
