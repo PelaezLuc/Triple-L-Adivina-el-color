@@ -53,6 +53,24 @@ function generarCajaAcierto() {
   ].style.backgroundColor = `rgb(${codigoRGB})`;
 }
 
+function resetearJuego() {
+  document.querySelectorAll(".acierto")[0].style.backgroundColor = "";
+  document.querySelectorAll(".acierto")[1].style.backgroundColor = "";
+  document.querySelectorAll(".acierto")[2].style.backgroundColor = "";
+  document.querySelectorAll(".fallo")[0].style.backgroundColor = "";
+  document.querySelectorAll(".fallo")[1].style.backgroundColor = "";
+  document.querySelectorAll(".fallo")[2].style.backgroundColor = "";
+  acierto = 0;
+  fallo = 0;
+  h1.innerHTML = "";
+  h1.append("¿Qué Color Es?");
+  generarBackgroundColor();
+  codigoRGB = generarCodigoRGB();
+  numGanador = generarNumAleatorio();
+  generarCajaAcierto();
+  imprimirCodigoRGB();
+}
+
 contenedorColores.addEventListener("click", (event) => {
   if (event.target.className !== "caja") {
     return;
@@ -60,7 +78,7 @@ contenedorColores.addEventListener("click", (event) => {
   if (event.target.style.backgroundColor === `rgb(${codigoRGB})`) {
     acierto++;
     if (acierto > 3 || fallo >= 3) {
-      location.reload();
+      resetearJuego();
     } else {
       switch (acierto) {
         case 1:
@@ -85,7 +103,7 @@ contenedorColores.addEventListener("click", (event) => {
   } else {
     fallo++;
     if (fallo > 3 || acierto >= 3) {
-      location.reload();
+      resetearJuego();
     } else {
       switch (fallo) {
         case 1:
@@ -118,12 +136,11 @@ botonNuevoJuego.addEventListener("click", (event) => {
   if (event.target.className !== "boton-reset") {
     return;
   }
-  location.reload();
+  resetearJuego();
 });
 
 generarBackgroundColor();
 codigoRGB = generarCodigoRGB();
 numGanador = generarNumAleatorio();
-console.log(numGanador);
 generarCajaAcierto();
 imprimirCodigoRGB();

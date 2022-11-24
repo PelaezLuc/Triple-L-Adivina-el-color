@@ -6,9 +6,6 @@
 }
 
 body {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
   background-color: #dedede;
 }
 
@@ -38,8 +35,10 @@ header p {
   margin-left: 6px;
   margin-bottom: 1px;
 }
+
 .seccion-1 {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
@@ -47,9 +46,8 @@ header p {
 .seccion-2 {
   margin-top: 8vh;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 15% !important;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .seccion-3 {
@@ -60,13 +58,8 @@ header p {
 }
 
 .seccion-4 {
-  font-family: "Manrope", sans-serif;
-  font-size: 4rem;
-  font-weight: 600;
-  display: flex;
-  justify-content: center;
-  z-index: 999;
-  border-radius: 5%;
+  margin-top: 4rem;
+  margin-bottom: 8rem;
 }
 
 h1 {
@@ -137,24 +130,22 @@ h1 {
 }
 
 ul {
-  margin-top: 4rem;
   display: flex;
-  gap: 10rem;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 li {
   font-weight: 800;
   list-style-type: none;
   height: 50px;
+  width: 200px;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  padding: 0.5rem 1.5rem;
   color: #1e1e1e;
   border-radius: 50px;
-  background: #dedede;
   box-shadow: -18px -18px 45px #9b9b9bba, 18px 18px 45px #ffffff;
   /*animacion*/
   animation-name: exampleRGB;
@@ -164,22 +155,20 @@ li {
 .acierto {
   width: 20px;
   height: 20px;
-  background-color: #dedede;
   border-radius: 50%;
 }
 
 .fallo {
   width: 20px;
   height: 20px;
-  background-color: #dedede;
   border-radius: 50%;
 }
 
 #boton-reset {
-  border: 0;
-  background-color: #dedede;
+  border: none;
   font-weight: 800;
   color: #1e1e1e;
+  cursor: pointer;
 }
 
 @keyframes example {
@@ -193,6 +182,7 @@ li {
 }
 
 footer {
+  width: 100vw;
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -205,13 +195,23 @@ footer p {
   font-weight: 500;
 }
 
-#boton-reset {
-  cursor: pointer;
-}
-
 .titulo,
 h1,
 #codigo-rgb,
 li:nth-child(odd) {
   cursor: default;
+}
+
+@media (max-width: 700px) {
+  h1 {
+    margin: 10px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
 }
