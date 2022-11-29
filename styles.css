@@ -164,8 +164,13 @@ li {
   border-radius: 50%;
 }
 
-#boton-reset {
+.boton-reset {
+  width: 100%;
+  height: 100%;
+  background-color: #dedede;
+  font-size: 1rem;
   border: none;
+  border-radius: 50px;
   font-weight: 800;
   color: #1e1e1e;
   cursor: pointer;
