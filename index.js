@@ -71,6 +71,19 @@ function resetearJuego() {
   imprimirCodigoRGB();
 }
 
+generarBackgroundColor();
+codigoRGB = generarCodigoRGB();
+numGanador = generarNumAleatorio();
+generarCajaAcierto();
+imprimirCodigoRGB();
+
+botonNuevoJuego.addEventListener("click", (event) => {
+  if (event.target.className !== "boton-reset") {
+    return;
+  }
+  resetearJuego();
+});
+
 contenedorColores.addEventListener("click", (event) => {
   if (event.target.className !== "caja") {
     return;
@@ -84,10 +97,22 @@ contenedorColores.addEventListener("click", (event) => {
         case 1:
           document.querySelectorAll(".acierto")[0].style.backgroundColor =
             "green";
+          generarBackgroundColor();
+          codigoRGB = generarCodigoRGB();
+          numGanador = generarNumAleatorio();
+          console.log(numGanador);
+          generarCajaAcierto();
+          imprimirCodigoRGB();
           break;
         case 2:
           document.querySelectorAll(".acierto")[1].style.backgroundColor =
             "green";
+          generarBackgroundColor();
+          codigoRGB = generarCodigoRGB();
+          numGanador = generarNumAleatorio();
+          console.log(numGanador);
+          generarCajaAcierto();
+          imprimirCodigoRGB();
           break;
 
         case 3:
@@ -108,9 +133,21 @@ contenedorColores.addEventListener("click", (event) => {
       switch (fallo) {
         case 1:
           document.querySelectorAll(".fallo")[0].style.backgroundColor = "red";
+          generarBackgroundColor();
+          codigoRGB = generarCodigoRGB();
+          numGanador = generarNumAleatorio();
+          console.log(numGanador);
+          generarCajaAcierto();
+          imprimirCodigoRGB();
           break;
         case 2:
           document.querySelectorAll(".fallo")[1].style.backgroundColor = "red";
+          generarBackgroundColor();
+          codigoRGB = generarCodigoRGB();
+          numGanador = generarNumAleatorio();
+          console.log(numGanador);
+          generarCajaAcierto();
+          imprimirCodigoRGB();
           break;
         case 3:
           document.querySelectorAll(".fallo")[2].style.backgroundColor = "red";
@@ -123,24 +160,4 @@ contenedorColores.addEventListener("click", (event) => {
       h1.append(textoDerrota);
     }
   }
-
-  generarBackgroundColor();
-  codigoRGB = generarCodigoRGB();
-  numGanador = generarNumAleatorio();
-  console.log(numGanador);
-  generarCajaAcierto();
-  imprimirCodigoRGB();
 });
-
-botonNuevoJuego.addEventListener("click", (event) => {
-  if (event.target.className !== "boton-reset") {
-    return;
-  }
-  resetearJuego();
-});
-
-generarBackgroundColor();
-codigoRGB = generarCodigoRGB();
-numGanador = generarNumAleatorio();
-generarCajaAcierto();
-imprimirCodigoRGB();
